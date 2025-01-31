@@ -18,6 +18,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   /* background-color: var(--background-color); */
 }
 
@@ -197,8 +198,10 @@ body {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   width: 100%;
+  margin-top: -120px;
   height: 100vh; /* Ensure the container takes the full height of the viewport */
   top: -350px; /* Adjust the value to move it higher */
+
 }
 
 .background-image {
@@ -432,7 +435,7 @@ body {
   background: url('images/Container\ \(1\).png') no-repeat center center;
   background-size: cover;
   border-radius: 20px;
-  margin-left: 80px;
+  margin-left: 125px;
 }
 
 .benefits-content {
@@ -549,18 +552,46 @@ body {
   width: 80%;
   max-width: 1200px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .carousel {
   display: flex;
-  justify-content: space-between;
   gap: 35px;
   margin-top: 30px;
+  animation: slide 100s linear infinite;
+  
   
 }
 
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  
+  20% {
+    transform: translateX(calc(-300px * 1)); /* Move to the 1st item */
+  }
+
+  40% {
+    transform: translateX(calc(-300px * 2)); /* Move to the 2nd item */
+  }
+
+  60% {
+    transform: translateX(calc(-300px * 3)); /* Move to the 3rd item */
+  }
+
+  80% {
+    transform: translateX(calc(-300px * 4)); /* Move to the 4th item */
+  }
+
+  100% {
+    transform: translateX(0); /* Loop back to the first item */
+  }
+}
+
 .card {
-  flex: 1;
+  flex: 0 0 300px; /* Ensures each item has a fixed width */
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -569,7 +600,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover{
+  transform: scale(1.05); 
 }
 
 
@@ -661,7 +699,7 @@ body {
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   margin-left: 320px;
@@ -673,6 +711,11 @@ body {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   margin-right: 90px;
+  transition: tranform 0.3s ease-in-out;
+}
+
+.logo-grid img:hover{
+  transform: scale(1.05); 
 }
 
 
@@ -683,7 +726,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 90%;
+  width: 100vw
   max-width: 1000px;
   height: 388px;
 }
@@ -718,22 +761,24 @@ p {
   font-family: 'Inter';
 }
 
-.about-image {
-  width: 40%;
-  height: 341px;
-  margin-right: -320.5px;
-}
+/* .about-image {
+  width: 30%;
+  height: 20%;
+
+} */
+
 
 .about-image img {
-  width: 100%;
+  width: 90%;
   height: auto;
+  margin-left: 120px;
 }
 
 
 
 .form-container {
   display: flex;
-  width: 1212px;
+  width: 100vw;
   background: white;
   overflow: hidden;
   margin-top: 30px;
@@ -746,7 +791,8 @@ p {
   background: #82CC45;
   color: white;
   padding: 40px;
-  font-family: 'Lato'
+  font-family: 'Lato';
+  padding-right: 80px;
 }
 
 .left-section h1 {
@@ -795,7 +841,7 @@ label {
 .contact-fields input {
   width: 100%;
   padding: 5px 0;
-  max-width: 250px;
+  max-width: 350px;
   border: none;
   border-bottom: 1px solid #1F64FF; /* Bottom border only */
   outline: none;
@@ -804,6 +850,7 @@ label {
   
 }
 
+
 .name-fields div:first-child,
 .contact-fields div:first-child {
     flex: 1.2; /* Slightly increase width of first column */
@@ -811,8 +858,12 @@ label {
 
 .name-fields div:last-child,
 .contact-fields div:last-child {
-    flex: 0.8; /* Reduce width of the second column */
+    flex: 1.2; /* Reduce width of the second column */
+    margin-left: 90px;
+
 }
+
+
 .name-fields div,
 .contact-fields div {
   display: flex;
@@ -849,6 +900,7 @@ label {
 
 /* Submit button styling */
 button {
+  
   background: #73C04F;
   color: white;
   padding: 10px 20px;
@@ -1036,7 +1088,7 @@ footer {
   /* Image Container */
   .image-container {
     height: auto;
-    top: -150px;
+    top: -250px;
   }
 
   .background-image {
@@ -1066,10 +1118,12 @@ footer {
 
   /* Benefits Section */
   .benefits-container {
+    
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 60px;
+    width: 100vw;
     padding: 20px;
-    width: 90%;
+    
   }
 
   .benefits-content {
@@ -1144,6 +1198,7 @@ footer {
     width: 100%;
     margin-right: 0;
     margin-top: 20px;
+    justify-content: flex-end;
   }
 
   /* Contact Form */
@@ -1211,7 +1266,7 @@ footer {
 
   .benefits-container {
     width: 95%;
-    margin-left: 20px;
+    margin-left: 40px;
   }
 
   .logo-grid {
@@ -1597,5 +1652,188 @@ footer {
 
   .form-container {
     width: 95%;
+  }
+}
+
+
+/* Media Query for 1024px (Large tablets and small laptops) */
+@media screen and (max-width: 1024px) {
+  /* Navbar */
+  .nav-links {
+    margin-right: 50px;
+    gap: 15px;
+  }
+
+  /* Header Section */
+  .section-container {
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .headline {
+    font-size: 26px;
+  }
+
+  /* Image Container */
+  .image-container {
+    top: -300px;
+  }
+
+  .background-image {
+    width: 85%;
+  }
+
+  /* Features Section */
+  .features {
+    margin-top: -350px;
+  }
+
+  .features-container {
+    max-width: 900px;
+    gap: 25px;
+  }
+
+  .feature {
+    width: calc(33.33% - 20px);
+  }
+
+  /* Benefits Section */
+  .benefits-container {
+    width: 85%;
+    margin-left: 60px;
+    padding: 30px;
+  }
+
+  .benefits-content {
+    width: 45%;
+  }
+
+  .benefits-list {
+    width: 40%;
+  }
+
+  /* Testimonials */
+  .carousel-container {
+    width: 85%;
+  }
+
+  .carousel {
+    gap: 25px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  /* Trusted Section */
+  .trusted-text {
+    margin-left: 200px;
+  }
+
+  .logo-grid {
+    margin-left: 250px;
+    gap: 15px;
+  }
+
+  /* About Section */
+  .about-section {
+    width: 85%;
+    margin: 40px auto;
+  }
+
+  .about-content {
+    width: 45%;
+  }
+
+  .intro-text {
+    width: 140%;
+  }
+
+  .about-image {
+    width: 45%;
+    margin-right: -200px;
+  }
+
+  /* Form Container */
+  .form-container {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
+
+/* Media Query for 1080px */
+@media screen and (max-width: 1080px) {
+  /* Navbar */
+  .nav-links {
+    margin-right: 70px;
+  }
+
+  /* Header Section */
+  .section-container {
+    width: 92%;
+    max-width: 960px;
+  }
+
+  /* Image Container */
+  .background-image {
+    width: 82%;
+  }
+
+  /* Features Section */
+  .features-container {
+    max-width: 960px;
+  }
+
+  /* Benefits Section */
+  .benefits-container {
+    width: 88%;
+    margin-left: 65px;
+  }
+
+  /* Testimonials */
+  .carousel-container {
+    width: 88%;
+  }
+
+  /* Trusted Section */
+  .trusted-text {
+    margin-left: 220px;
+  }
+
+  .logo-grid {
+    margin-left: 270px;
+  }
+
+  /* About Section */
+  .about-section {
+    width: 88%;
+  }
+
+  .intro-text {
+    width: 150%;
+  }
+
+  .about-image {
+    margin-right: -250px;
+  }
+
+  /* Form Container */
+  .form-container {
+    width: 92%;
+  }
+
+  /* Footer */
+  .top-border {
+    width: 85%;
+    margin-left: 120px;
+  }
+
+  .bottom-border {
+    width: 92%;
+    margin-left: 60px;
+  }
+
+  .footer-content {
+    width: 85%;
   }
 }
